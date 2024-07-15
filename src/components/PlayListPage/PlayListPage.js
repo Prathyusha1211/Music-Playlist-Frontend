@@ -1,8 +1,9 @@
-import { Button, Dialog, DialogActions, DialogContent, IconButton, List, ListItem, ListItemText, TextField } from "@mui/material";
+import { Badge, Box, Button, Dialog, DialogActions, DialogContent, IconButton, List, ListItem, ListItemIcon, ListItemText, TextField } from "@mui/material";
 import React, { useState } from "react";
 import DeleteIcon from '@mui/icons-material/Delete';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
 
-const PlayListPage = ({ playlists,onAddPlaylist,onDeletePlaylist }) => {
+const PlayListPage = ({ playlists, onAddPlaylist, onDeletePlaylist }) => {
 
     const [open, setOpen] = useState(false);
 
@@ -30,18 +31,42 @@ const PlayListPage = ({ playlists,onAddPlaylist,onDeletePlaylist }) => {
 
     return (
         <>
-            <Button variant="contained" data-testid="create-new-playlist-button" sx={{ margin: 5 }} onClick={() => { handleDialogOpen() }}>
-                Create Playlist
-            </Button>
+            <Box style={{
+                padding: 2,
+                borderRadius: 1,
+                maxWidth: '400px',
+                margin: '10px',
+                
+            }}>
+                <Button variant="contained" data-testid="create-new-playlist-button" style={{ margin: '20px', }} onClick={() => { handleDialogOpen() }}>
+                    Create Playlist
+                </Button>
+
+            </Box>
+
             <List>
                 {playlists.map((playlist) => (
-                    <ListItem key={playlist.id} secondaryAction={
-                        <IconButton edge="end" aria-label="delete" onClick={() => handleDeletePlaylist(playlist.id)} data-testid={`delete-playlist-${playlist.id}`}>
-                            <DeleteIcon />
-                        </IconButton>}>
-                        <ListItemText primary={playlist.name} />
+                    <Box style={{
+                        padding: 2,
+                        borderRadius: 1,
+                        maxWidth: '400px',
+                        margin: '20px',
+                        backgroundColor: '#e3f2fd',
+                    }}>
+                        <ListItem key={playlist.id} secondaryAction={
+                            <IconButton edge="end" aria-label="delete" onClick={() => handleDeletePlaylist(playlist.id)} data-testid={`delete-playlist-${playlist.id}`}>
+                                <DeleteIcon />
+                            </IconButton>}>
+                            <ListItemIcon>
+                                <Badge badgeContent={playlist.songsCount || 0} color="secondary">
+                                    <MusicNoteIcon />
+                                </Badge>
+                            </ListItemIcon>
+                            <ListItemText primary={playlist.name} />
 
-                    </ListItem>
+                        </ListItem>
+                    </Box>
+
                 ))}
             </List>
             <Dialog open={open}>
@@ -57,8 +82,8 @@ const PlayListPage = ({ playlists,onAddPlaylist,onDeletePlaylist }) => {
                         onChange={(e) => setNewPlaylistName(e.target.value)} />
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={()=>{handleDialogClose()}}>Cancel</Button>
-                    <Button onClick={()=>{handleCreatePlaylist()}}>Create</Button>
+                    <Button onClick={() => { handleDialogClose() }}>Cancel</Button>
+                    <Button onClick={() => { handleCreatePlaylist() }}>Create</Button>
                 </DialogActions>
 
             </Dialog>

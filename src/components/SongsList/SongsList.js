@@ -9,18 +9,29 @@ const allSongs = [
     { id: 4, title: "Song 4" },
 ];
 
-const SongsList = ({ playlists }) => {
+const SongsList = ({ playlists,onAddToPlaylist }) => {
 
 
     const [open, setOpen] = useState(false);
 
-    const handleDialogOpen =()=>{
+    const [selectedSong, setSelectedSong] = useState(null);
+
+    const handleDialogOpen =(song)=>{
+        setSelectedSong(song);
         setOpen(true);
     }
 
     const handleDialogClose =()=>{
         setOpen(false);
+        setSelectedSong(null);
     }
+
+    const handleAddToPlaylist = (playlistId) => {
+        if (selectedSong) {
+            onAddToPlaylist(selectedSong.id, playlistId);
+            handleDialogClose();
+        }
+    };
 
     return (
         <Box style={{
@@ -57,7 +68,7 @@ const SongsList = ({ playlists }) => {
                         gap: 1,
                     }}>
                     {playlists.map((playlist) => (
-                        <Button variant="contained" color="primary" key={playlist.id} sx={{ mb: 1 }}>
+                        <Button variant="contained" color="primary" key={playlist.id} sx={{ mb: 1 }} onClick={() => handleAddToPlaylist(playlist.id)}>
                             {playlist.name}
                         </Button>
                     ))}
