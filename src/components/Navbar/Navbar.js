@@ -2,6 +2,7 @@ import React from "react";
 import {AppBar, Badge, IconButton, Toolbar, Typography} from '@mui/material'
 import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 import {styled} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const CustomToolbar = styled(Toolbar)({
     display: 'flex',
@@ -10,7 +11,13 @@ const CustomToolbar = styled(Toolbar)({
 
 
 
+
 const Navbar = () => {
+    const navigate = useNavigate();
+    const handleNavigate=()=>{
+        navigate('/playlists');
+    }
+    
 
     return(
         <AppBar position="sticky">
@@ -18,11 +25,10 @@ const Navbar = () => {
             <Typography variant="h5">
                 Music Playlist
             </Typography>
-            <IconButton style={{color:"white"}} data-testid="queue-music-icon">
+            <IconButton style={{color:"white"}} data-testid="queue-music-icon" onClick={handleNavigate}>
                 <Badge badgeContent={3} data-testid="playlist-count">
                 <QueueMusicIcon/>
                 </Badge>
-                
             </IconButton>
             </CustomToolbar>
         </AppBar>
