@@ -38,7 +38,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
+        <Navbar playlists={playlists}/>
         <Routes>
           <Route path="/" element={<SongsList playlists={playlists} onAddToPlaylist={addToPlaylist} />} />
           <Route path="/playlists" element={<PlayListPage playlists={playlists} onAddPlaylist={addPlaylist} onDeletePlaylist={deletePlaylist} />} />
