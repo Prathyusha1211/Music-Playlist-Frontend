@@ -7,3 +7,8 @@ fileignoreconfig:
 - filename: package-lock.json
   checksum: c66474a68afe123a88af810bfca8bb31af85593539fe843232473e2b0734af65
 version: ""
+
+fileignoreconfig:
+- filename: src/components/SongsList/SongsList.js
+  checksum: e1143bc2f88d8bb572211a86919d45ee7492a255c1a727f03168b27934e36390
+version: ""

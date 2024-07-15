@@ -4,18 +4,22 @@ import {BrowserRouter, Routes,Route} from 'react-router-dom'
 import PlayListPage from './components/PlayListPage/PlayListPage';
 import SongsList from './components/SongsList/SongsList';
 
+const playlists=[
+        { id: 1, name: 'Melody',count:0 },
+        { id: 2, name: 'Pop',count:0 },
+        { id: 3, name: 'Folk',count:0 },
+];
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
       <Navbar/>
       <Routes>
-        <Route path="/" element={<SongsList/>} />
+        <Route path="/" element={<SongsList playlists={playlists}/>} />
         <Route path="/playlists" element={<PlayListPage/>} />
       </Routes>
       
     </div>
-
     </BrowserRouter>
     
   );
