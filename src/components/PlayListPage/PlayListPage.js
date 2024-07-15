@@ -1,8 +1,11 @@
+import { Button } from "@mui/material";
 import React from "react";
 
 const PlayListPage = () =>{
     return(
-        <h1>PlayListPage</h1>
+        <Button variant="contained" data-testid="create-new-playlist-button">
+            Create Playlist
+        </Button>
     );
 }
 export default PlayListPage;

@@ -5,9 +5,9 @@ import PlayListPage from './components/PlayListPage/PlayListPage';
 import SongsList from './components/SongsList/SongsList';
 
 const playlists=[
-        { id: 1, name: 'Melody',count:0 },
-        { id: 2, name: 'Pop',count:0 },
-        { id: 3, name: 'Folk',count:0 },
+        { id: 1, name: 'Melody'},
+        { id: 2, name: 'Pop'},
+        { id: 3, name: 'Folk'},
 ];
 function App() {
   return (

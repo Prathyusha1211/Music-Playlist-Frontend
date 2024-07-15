@@ -34,7 +34,7 @@ const SongsList = ({ playlists }) => {
                     <ListItem key={song.id}>
                         <ListItemText primary={song.title} />
                         <ListItemSecondaryAction>
-                            <Button variant="contained" color="primary" onClick={()=>handleDialogOpen(song)}>
+                            <Button variant="contained" color="primary" onClick={()=>handleDialogOpen(song)} data-testid={`add-to-playlist-button-${song.id}`}>
                                 Add to Playlist
                             </Button >
                         </ListItemSecondaryAction>
@@ -42,11 +42,7 @@ const SongsList = ({ playlists }) => {
                 ))}
             </List>
 
-            <Dialog open={open} maxWidth="sm" PaperProps={{
-        style: {
-          width: 500,  // Set a fixed width for the dialog
-        },
-      }}>
+            <Dialog open={open} maxWidth="sm" PaperProps={{style: {width: 500,},}} data-testid="addToPlayList-dialog">
                 <DialogTitle>
                     Add to Playlist
                     <IconButton onClick={()=>handleDialogClose()} edge="end" sx={{ position: 'absolute', right: 30, top: 8 }}>
