@@ -1,5 +1,5 @@
 import React from "react";
-import {AppBar, IconButton, Toolbar, Typography} from '@mui/material'
+import {AppBar, Badge, IconButton, Toolbar, Typography} from '@mui/material'
 import QueueMusicIcon from '@mui/icons-material/QueueMusic'
 import {styled} from "@mui/material";
 
@@ -19,7 +19,10 @@ const Navbar = () => {
                 Music Playlist
             </Typography>
             <IconButton style={{color:"white"}} data-testid="queue-music-icon">
+                <Badge badgeContent={3} data-testid="playlist-count">
                 <QueueMusicIcon/>
+                </Badge>
+                
             </IconButton>
             </CustomToolbar>
         </AppBar>

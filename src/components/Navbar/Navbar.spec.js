@@ -11,9 +11,10 @@ describe('Navbar Rendering',()=>{
 
     });
 
-    it('should contain a music playlist icon in the navbar',()=>{
+    it('should contain a music playlist icon in the navbar with count of number of playlists',()=>{
         render(<Navbar/>);
 
         expect(screen.getByTestId('queue-music-icon')).toBeInTheDocument();
+        expect(screen.getByTestId('playlist-count')).toHaveTextContent(3);
     })
 });
