@@ -1,7 +1,8 @@
-import { Button, Dialog, DialogActions, DialogContent, List, ListItem, ListItemText, TextField } from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, IconButton, List, ListItem, ListItemText, TextField } from "@mui/material";
 import React, { useState } from "react";
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const PlayListPage = ({ playlists,onAddPlaylist }) => {
+const PlayListPage = ({ playlists,onAddPlaylist,onDeletePlaylist }) => {
 
     const [open, setOpen] = useState(false);
 
@@ -23,6 +24,10 @@ const PlayListPage = ({ playlists,onAddPlaylist }) => {
         }
     };
 
+    const handleDeletePlaylist = (id) => {
+        onDeletePlaylist(id);
+    }
+
     return (
         <>
             <Button variant="contained" data-testid="create-new-playlist-button" sx={{ margin: 5 }} onClick={() => { handleDialogOpen() }}>
@@ -30,7 +35,10 @@ const PlayListPage = ({ playlists,onAddPlaylist }) => {
             </Button>
             <List>
                 {playlists.map((playlist) => (
-                    <ListItem key={playlist.id}>
+                    <ListItem key={playlist.id} secondaryAction={
+                        <IconButton edge="end" aria-label="delete" onClick={() => handleDeletePlaylist(playlist.id)} data-testid={`delete-playlist-${playlist.id}`}>
+                            <DeleteIcon />
+                        </IconButton>}>
                         <ListItemText primary={playlist.name} />
 
                     </ListItem>

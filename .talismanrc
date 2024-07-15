@@ -17,3 +17,8 @@ fileignoreconfig:
 - filename: src/components/SongsList/SongsList.js
   checksum: 61b302b6f799e26d69ec81f2fb8af04f2937c257a78d604f4d5be89b59f875c6
 version: ""
+
+fileignoreconfig:
+- filename: src/components/PlayListPage/PlayListPage.js
+  checksum: 8af841318c9f95cdfb8cf5c36e3dc6b94cc5397db24d0971ed173ce42dd697f2
+version: ""
